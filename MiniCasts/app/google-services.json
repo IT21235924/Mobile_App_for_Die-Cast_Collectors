@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "461061859607",
+    "project_id": "mini-casts",
+    "storage_bucket": "mini-casts.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:461061859607:android:186aa745fd3d3e85c62f52",
+        "android_client_info": {
+          "package_name": "com.example.minicasts"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBacyx60kAPrz5y_jm5MlWmvOsVJ93QaLo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
