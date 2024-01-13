@@ -33,12 +33,15 @@ class SignUpActivity : AppCompatActivity() {
             if (email.isNotEmpty() && pass.isNotEmpty() && confirmPass.isNotEmpty()) {
                 if (pass == confirmPass) {
 
-                    firebaseAuth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener {
-                        if (it.isSuccessful) {
+                    firebaseAuth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener {task ->
+                        if (task.isSuccessful) {
+
+
                             val intent = Intent(this, SignInActivity::class.java)
                             startActivity(intent)
+
                         } else {
-                            Toast.makeText(this, it.exception.toString(), Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this, task.exception.toString(), Toast.LENGTH_SHORT).show()
 
                         }
                     }
