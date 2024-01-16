@@ -6,11 +6,15 @@ import android.os.Bundle
 import android.widget.Toast
 import com.example.minicasts.databinding.ActivitySignUpBinding
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FieldValue
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 
 class SignUpActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySignUpBinding
     private lateinit var firebaseAuth: FirebaseAuth
+    private val db = Firebase.firestore
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,13 +40,26 @@ class SignUpActivity : AppCompatActivity() {
                     firebaseAuth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener {task ->
                         if (task.isSuccessful) {
 
+                            val userID = FirebaseAuth.getInstance().currentUser!!.uid
+                            val userMap = hashMapOf(
+                                "User_ID" to userID,
+                                "email" to email,
+                                "password" to pass,
+                                "timestamp" to FieldValue.serverTimestamp()
+                            )
 
-                            val intent = Intent(this, SignInActivity::class.java)
-                            startActivity(intent)
+                            db.collection("users").document(userID).set(userMap).addOnSuccessListener {
+                                Toast.makeText(this, "Successfully Added!", Toast.LENGTH_SHORT).show()
+
+                                val intent = Intent(this, SignInActivity::class.java)
+                                startActivity(intent)
+
+                            }.addOnFailureListener {
+                                Toast.makeText(this, "Failed!", Toast.LENGTH_SHORT).show()
+                            }
 
                         } else {
                             Toast.makeText(this, task.exception.toString(), Toast.LENGTH_SHORT).show()
-
                         }
                     }
                 } else {

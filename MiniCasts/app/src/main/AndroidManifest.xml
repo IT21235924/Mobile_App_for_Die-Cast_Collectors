@@ -12,7 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MiniCasts"
         tools:targetApi="31">
-
+        <activity
+            android:name=".UserDashboard"
+            android:exported="false" />
         <activity
             android:name=".SignInActivity"
             android:exported="true">
@@ -22,16 +24,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".SignUpActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="false" />
-
-
-
     </application>
 
 </manifest>
