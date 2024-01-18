@@ -83,9 +83,28 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
+        <TextView
+            android:id="@+id/labelVManu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Vehicle manufacturer"
+            android:layout_marginTop="10dp"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
-
-
+        <EditText
+            android:id="@+id/inputVManu"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/edittext_bg"
+            android:ems="10"
+            android:hint="Enter vehicle manufacturer"
+            android:inputType="text"
+            android:padding="12dp"
+            android:textColor="#707070"
+            android:textSize="18sp" />
 
 
     </LinearLayout>
