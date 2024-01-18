@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">MiniCasts</string>
+
+    <string name="select">Select Item</string>
 </resources>

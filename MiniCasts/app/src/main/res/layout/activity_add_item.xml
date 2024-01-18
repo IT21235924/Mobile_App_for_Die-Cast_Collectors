@@ -53,6 +53,39 @@
             android:textColor="#707070"
             android:textSize="18sp" />
 
+        <TextView
+            android:id="@+id/labelPManufacturer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Select product manufacturer"
+            android:layout_marginTop="10dp"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+        
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            >
+
+            <AutoCompleteTextView
+                android:id="@+id/auto_complete"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/select"
+                android:inputType="none"
+                android:background="@drawable/edittext_bg"
+                android:padding="12dp"
+                android:textColor="#707070"
+                android:textSize="18sp"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+
+
 
 
     </LinearLayout>
