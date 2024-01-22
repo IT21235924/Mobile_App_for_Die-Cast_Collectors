@@ -30,19 +30,22 @@ class SignUpActivity : AppCompatActivity() {
         }
 
         binding.button.setOnClickListener {
+            val name = binding.nameEt.text.toString()
+            val phone = binding.phoneEt.text.toString()
             val email = binding.emailEt.text.toString()
             val pass = binding.passET.text.toString()
             val confirmPass = binding.confirmPassEt.text.toString()
 
-            if (email.isNotEmpty() && pass.isNotEmpty() && confirmPass.isNotEmpty()) {
+            if (name.isNotEmpty() && phone.isNotEmpty() && email.isNotEmpty() && pass.isNotEmpty() && confirmPass.isNotEmpty()) {
                 if (pass == confirmPass) {
 
-                    firebaseAuth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener {task ->
+                    firebaseAuth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener { task ->
                         if (task.isSuccessful) {
-
                             val userID = FirebaseAuth.getInstance().currentUser!!.uid
                             val userMap = hashMapOf(
                                 "User_ID" to userID,
+                                "name" to name,
+                                "phone" to phone,
                                 "email" to email,
                                 "password" to pass,
                                 "timestamp" to FieldValue.serverTimestamp()
@@ -51,23 +54,21 @@ class SignUpActivity : AppCompatActivity() {
                             db.collection("users").document(userID).set(userMap).addOnSuccessListener {
                                 Toast.makeText(this, "Successfully Added!", Toast.LENGTH_SHORT).show()
 
-                                val intent = Intent(this, SignInActivity::class.java)
+                                val intent = Intent(this, MainActivity::class.java)
                                 startActivity(intent)
 
                             }.addOnFailureListener {
                                 Toast.makeText(this, "Failed!", Toast.LENGTH_SHORT).show()
                             }
-
                         } else {
                             Toast.makeText(this, task.exception.toString(), Toast.LENGTH_SHORT).show()
                         }
                     }
                 } else {
-                    Toast.makeText(this, "Password is not matching", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Passwords do not match!", Toast.LENGTH_SHORT).show()
                 }
             } else {
-                Toast.makeText(this, "Empty Fields Are not Allowed !!", Toast.LENGTH_SHORT).show()
-
+                Toast.makeText(this, "Please fill all fields!", Toast.LENGTH_SHORT).show()
             }
         }
 

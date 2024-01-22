@@ -9,5 +9,7 @@
     <color name="HW_blue">#00A4FF</color>
     <color name="HW_orange">#F46B25</color>
     <color name="Light_gray">#D7D6D7</color>
+    <color name="Heading_Blue">#0583F2</color>
+    <color name="input_blue">#0583F2</color>
 
 </resources>
